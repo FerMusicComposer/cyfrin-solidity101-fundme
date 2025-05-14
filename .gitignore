@@ -1,0 +1,51 @@
+# Compiled contracts and build artifacts
+artifacts/
+build/
+dist/
+cache/
+
+# Dependencies
+node_modules/
+
+# Remix IDE specific files (if any local configuration is saved)
+.remix/
+
+# VS Code specific files (if you also use VS Code)
+.vscode/
+
+# Truffle/Hardhat specific files (if you use these frameworks)
+# commentaries/
+# releases/
+# .env
+# .openzeppelin/
+# coverage/
+# coverage.json
+# typechain/
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS generated files
+.DS_Store
+.ipynb_checkpoints/
+
+# Testing and coverage reports
+# coverage/
+# .nyc_output/
+
+# terk -- test runner
+.terk/
+
+# Slither static analysis
+slither.config.json
+
+# ABI files (optional - you might want to keep these in version control)
+# *.abi
+
+# Any other temporary or generated files
+*.tmp
+*~
