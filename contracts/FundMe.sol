@@ -6,10 +6,12 @@ pragma solidity ^0.8.24;
 
 import {PriceConverter} from "./PriceConverter.sol";
 
+error NotOwner();
+
 contract FundMe {
     using PriceConverter for uint256;
 
-    uint256 public minimumAmount = 5e18;
+    uint256 public constant minimumAmount = 5e18;
     address public immutable owner;
     address[] public funders;
     mapping(address funder => uint256 amountFunded) public addressToAmountFunded;
@@ -19,7 +21,7 @@ contract FundMe {
     }
 
     modifier onlyOwner() {
-        require(msg.sender == owner, "Only contract owner can execute this function");
+        if (msg.sender != owner) {revert NotOwner();}
         _;
     }
     
@@ -50,4 +52,12 @@ contract FundMe {
         (bool callSuccess,) = msg.sender.call{value: address(this).balance}("");
         require(callSuccess, "Call failed");
     }
+
+    receive() external payable { 
+        fund();
+    }
+
+    fallback() external payable {
+        fund();
+     }
 }
